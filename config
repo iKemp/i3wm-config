@@ -269,3 +269,9 @@ mode "$mode_system" {
 }
 bindsym $mod+x mode "$mode_system"
 
+
+#:::::::::::::::::::::: Autostart app and daemons :::::::::::::::::::::::::::::#
+
+#       Wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/double_helix_1920.jpg
+# sh ~/.fehbg &
