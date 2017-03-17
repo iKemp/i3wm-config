@@ -216,3 +216,25 @@ bindsym $mod+minus scratchpad show
 bar {
         status_command i3status
 }
+
+
+#::::::::::::::::::::::::::::::: Out system :::::::::::::::::::::::::::::::::::#
+
+set $Locker i3lock && sleep 1
+set $mode_system System:   L :  | S :  | P :  | R :  | E :   
+
+mode "$mode_system" {
+        # TODO install fancy lock
+    #bindsym l exec --no-startup-id i3lock-fancy, mode "default"
+    bindsym l exec --no-startup-id i3lock -i ~/.config/i3/lock-screen.png, mode "default"
+    bindsym s exec --no-startup-id $Lock systemctl suspend, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+
+#   back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+x mode "$mode_system"
+
