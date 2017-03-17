@@ -138,6 +138,7 @@ bindsym $mod+Shift+0 move container to workspace $WS0
 #::::::::::::::::::::::::: App assigned in workspace ::::::::::::::::::::::::::# 
 
 assign [class="Chromium"]       $WS2
+assign [class="Code"]           $WS4
 assign [class="Vlc"]            $WS5
 
 
@@ -327,4 +328,7 @@ bindsym $mod+x mode "$mode_system"
 
 #       Wallpaper
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/double_helix_1920.jpg
-# sh ~/.fehbg &
+#       NetworkManager Applet
+exec --no-startup-id nm-applet
+#       Transparency
+exec xcompmgr -c -f -n
