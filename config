@@ -138,9 +138,10 @@ bindsym $mod+Shift+0 move container to workspace $WS0
 #::::::::::::::::::::::::: App assigned in workspace ::::::::::::::::::::::::::# 
 
 assign [class="Chromium"]       	$WS2
-assign [class="Thunar"]           	$WS6
-assign [class="Code"]           	$WS4
 assign [class="NetBeans IDE 8.2"]   $WS3
+assign [class="Code"]           	$WS4
+assign [class="Subl3"]           	$WS5
+assign [class="Thunar"]           	$WS6
 assign [class="Vlc"]            	$WS10
 
 
