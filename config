@@ -101,14 +101,14 @@ bindsym $mod+a focus parent
 
 set $WS1   1:
 set $WS2   2:
-set $WS3   3:
+set $WS3   3:
 set $WS4   4:
-set $WS5   5:
-set $WS6   6:
-set $WS7   7:
+set $WS5   5:
+set $WS6   6:
+set $WS7   7:
 set $WS8   8:
 set $WS9   9:
-set $WS0   10:
+set $WS0   10:
 
 #       Switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -138,9 +138,10 @@ bindsym $mod+Shift+0 move container to workspace $WS0
 #::::::::::::::::::::::::: App assigned in workspace ::::::::::::::::::::::::::# 
 
 assign [class="Chromium"]       	$WS2
+assign [class="Thunar"]           	$WS6
 assign [class="Code"]           	$WS4
-assign [class="NetBeans IDE 8.2"]       $WS4
-assign [class="Vlc"]            	$WS5
+assign [class="NetBeans IDE 8.2"]   $WS3
+assign [class="Vlc"]            	$WS10
 
 
 #:::::::::::::::::::::::::::: Config default ::::::::::::::::::::::::::::::::::#
