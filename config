@@ -327,6 +327,14 @@ mode "$mode_system" {
 bindsym $mod+x mode "$mode_system"
 
 
+#:::::::::::::::::::::: Application bindings :::::::::::::::::::::::::::::#
+
+# scrot & gimp - root
+bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+# scrot & gimp - select window or rectangle
+bindsym --release $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+
+
 #:::::::::::::::::::::: Autostart app and daemons :::::::::::::::::::::::::::::#
 
 # 	    Daemon
