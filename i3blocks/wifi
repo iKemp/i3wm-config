@@ -16,24 +16,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/license$
 
-#------------------------------------------------------------------$
+#------------------------------------------------------------------
 
 INTERFACE="${BLOCK_INSTANCE:-wlp2s0}"
 
-#------------------------------------------------------------------$
+#------------------------------------------------------------------
 
-# As per #36 -- It is transparent: e.g. if the machine has no batte$
-# connection (think desktop), the corresponding block should not be$
+# As per #36 -- It is transparent: e.g. if the machine has no battery or wireless
+# connection (think desktop), the corresponding block should not be displayed.
 [[ ! -d /sys/class/net/${INTERFACE}/wireless ]] ||
-    [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && $
+    [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && exit
 
-#------------------------------------------------------------------$
+#------------------------------------------------------------------
 
-QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 $
-
-#------------------------------------------------------------------$
-
-echo "$QUALITY% $(iw dev $INTERFACE link | grep SSID | cut -d " " -$
+QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+#------------------------------------------------------------------
+echo "$QUALITY% $(iw dev $INTERFACE link | grep SSID | cut -d " " -f 2-)"
 echo $QUALITY% # short text
 
 # color
@@ -46,4 +44,3 @@ elif [[ $QUALITY -lt 60 ]]; then
 elif [[ $QUALITY -lt 40 ]]; then
     echo "#FF0000"
 fi
-
