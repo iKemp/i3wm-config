@@ -32,7 +32,8 @@ font pango:monospace 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return workspace $WS1; exec i3-sensible-terminal
+bindsym $mod+Return workspace $WS1; exec i3-sensible-terminal 
+bindsym $mod+Shift+Return exec i3-sensible-terminal 
 #bindsym $mod+Return workspace $WS1; exec konsole
 
 # kill focused window
@@ -144,6 +145,10 @@ assign [class="Subl3"]           	$WS5
 assign [class="Thunar"]           	$WS6
 assign [class="Vlc"]            	$WS10
 
+
+#:::::::::::::::::::::::::::: Toggle monitor ::::::::::::::::::::::::::::::::::#
+
+bindsym $mod+m exec --no-startup-id /home/kmpi/.config/i3/bin/monitor
 
 #:::::::::::::::::::::::::::: Config default ::::::::::::::::::::::::::::::::::#
 
@@ -309,13 +314,15 @@ mode "$mode_gaps_outer" {
 #::::::::::::::::::::::::::::::: Out system :::::::::::::::::::::::::::::::::::#
 
 set $Locker i3lock && sleep 1
-set $mode_system System:   L :  | S :  | P :  | R :  | E :   
+set $mode_system System:   L :  | S :  | H :  | P :  | R :  | E :   
 
 mode "$mode_system" {
         # TODO install fancy lock
     #bindsym l exec --no-startup-id i3lock-fancy, mode "default"
     bindsym l exec --no-startup-id i3lock -i ~/.config/i3/lock-screen.png, mode "default"
-    bindsym s exec --no-startup-id $Lock systemctl suspend, mode "default"
+    #bindsym s exec --no-startup-id $Lock systemctl suspend, mode "default"
+    bindsym s exec --no-startup-id i3lock -i ~/.config/i3/lock-screen.png && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id i3lock -i ~/.config/i3/lock-screen.png && systemctl hibernate, mode "default"
     bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
@@ -330,10 +337,12 @@ bindsym $mod+x mode "$mode_system"
 #:::::::::::::::::::::: Application bindings :::::::::::::::::::::::::::::#
 
 # scrot & gimp - root
-bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+#bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 # scrot & gimp - select window or rectangle
-bindsym --release $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+#bindsym --release $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
+#       Screen capture
+bindsym Print exec spectacle
 
 #:::::::::::::::::::::: Autostart app and daemons :::::::::::::::::::::::::::::#
 
